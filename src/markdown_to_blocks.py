@@ -42,7 +42,8 @@ def block_to_block_type (block):
         return block_type_quote
     
     # Check if block is an unordered list
-    if all(line.strip().startswith(("*", "-")) for line in block.split("\n")):
+    lines = block.split("\n")
+    if all(line.strip().startswith("* ") or line.strip().startswith("- ") for line in lines):
         return block_type_unordered_list
 
     # Check if block is an ordered list
